@@ -1,8 +1,8 @@
 import React from "react";
 import MainPage from "./MainPage"
-import SignIn from "./SignIn"
 import SignUp from "./SignUp"
-import { Switch, Route} from "react-router-dom";
+import SignIn from "./SignIn"
+import { Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props){
