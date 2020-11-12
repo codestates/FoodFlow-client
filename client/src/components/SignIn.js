@@ -17,7 +17,7 @@ class SignIn extends React.Component {
   };
   handleSignIn = () => {
       const { email, password } = this.state;
-      if ( email===''||password==='' ) {
+      if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
           axios.post('https://localhost:3000/signin', { email : email, password : password})
@@ -27,7 +27,7 @@ class SignIn extends React.Component {
     render() {
         return (
             <div className="totalSignUps">
-                <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg"></img> 
+                <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg" alt="profile"></img> 
                 <center className="signUps">
                     <h1 className="signUps__title">로그인</h1>
                     <div className="signUps__body">
@@ -44,6 +44,7 @@ class SignIn extends React.Component {
                         <a href="https://github.com/login/oauth/authorize?client_id=6c600e12bf58f2a72319&redirect_uri=https://6a24503ce00f.ngrok.io">GitHub로 로그인</a>
                         </div>
                         <button className="signUps__btn" type='submit' onClick={this.handleSignIn}>로그인</button> 
+                        <div className="signUp__error"> {this.state.errorMessage} </div>
                     </div>
                 </center>
             </div>

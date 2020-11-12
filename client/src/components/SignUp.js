@@ -37,7 +37,7 @@ class SignUp extends React.Component {
     render() {
         return(
             <div className="totalSignUps">
-                 <img className="signUps__pic" src={testPic}></img>  
+                 <img className="signUps__pic" alt="profile" src={testPic}></img>  
                 <center className="signUps">
                     <h1 className="signUps__title">회원가입</h1>
                     <div className="signUps__body">
