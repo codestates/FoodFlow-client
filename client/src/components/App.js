@@ -1,7 +1,8 @@
 import React from "react";
 import MainPage from "./MainPage"
 import SignUp from "./SignUp"
-import { Switch, Route} from "react-router-dom";
+import SignIn from "./SignIn"
+import { Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props){
@@ -12,6 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
+          <Route exact path='/signin' render={() => <SignIn />} />
           <Route exact path='/signup' render={() => <SignUp />} />
           <Route exact path='/' render={() => <MainPage />} />
         </Switch>
@@ -19,5 +21,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
