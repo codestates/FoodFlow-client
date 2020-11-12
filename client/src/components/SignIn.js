@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Nav from "./Nav";
 
 class SignIn extends React.Component {
   constructor(props){
@@ -26,6 +27,8 @@ class SignIn extends React.Component {
     };
     render() {
         return (
+            <div>
+                <Nav />
             <div className="totalSignUps">
                 <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg" alt="profile"></img> 
                 <center className="signUps">
@@ -47,6 +50,7 @@ class SignIn extends React.Component {
                         <div className="signUp__error"> {this.state.errorMessage} </div>
                     </div>
                 </center>
+            </div>
             </div>
         )
     }
