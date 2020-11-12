@@ -1,4 +1,5 @@
 import React from "react"
+import Nav from "./Nav";
 
 import { Link } from "react-router-dom";
 
@@ -11,8 +12,7 @@ class MainPage extends React.Component {
     render() {
         return(
             <div>
-                <Link to='/signup'>회원가입</Link>
-                <Link to='/signin'>로그인</Link>
+               <Nav />
             </div>
         )
     }
