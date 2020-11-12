@@ -1,7 +1,8 @@
 import React from "react"
-import SignUp from "./SignUp"
-import axios from "axios";
-import { Link, withRouter } from "react-router-dom";
+import Nav from "./Nav";
+//import SignUp from "./SignUp"
+//import axios from "axios";
+//import { Link, withRouter } from "react-router-dom";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -13,7 +14,8 @@ class MainPage extends React.Component {
     render() {
         return(
             <div>
-                <Link to='/signup'>회원가입</Link>
+               <Nav />
+               <div>메인페이지</div>
             </div>
         )
     }

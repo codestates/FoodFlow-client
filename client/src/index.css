@@ -14,6 +14,44 @@ code {
     monospace;
 }
 
+.navs {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  box-sizing: content-box;
+  height: 75px;
+  width: 100%;
+  border-bottom: 2px solid #ece9e5;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navs__logo {
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.navs__tools {
+  align-items: center;
+  display: flex;
+  margin-bottom: 0.1rem;
+  padding-right: 40px;
+}
+
+.signUp__link {
+  margin-right: 20px;
+}
+
+.signUp__link,
+.signIn__link {
+  font-size: large;
+  font-weight: 700;
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
 .totalSignUps {
   display: inline-flex;
 }
@@ -27,7 +65,14 @@ code {
 }
 
 .signUps__title {
-  margin-bottom: 10px;
+  padding-top: 30px;
+  margin-bottom: 18px;
+}
+
+.signUps__subTitle {
+  padding-bottom: 45px;
+  color: #a8a8a8;
+  font-weight: 700;
 }
 
 .signUps__body {
@@ -35,7 +80,7 @@ code {
 }
 
 .signUp {
-  margin-bottom: 7px;
+  margin-bottom: 13px;
 }
 
 .signUps__input {
@@ -46,9 +91,19 @@ code {
   border-radius: 4px;
 }
 
+.signUps__passwordB {
+  padding-bottom: 20px;
+}
+
 .signUps__btn {
   width: 280px;
   height: 30px;
   background-color: #fbd46d;
   border: 1px solid #dbdbdb;
+}
+
+.signUp__error {
+  padding-top: 28px;
+  color: #c83c0d;
+  font-weight: 700;
 }

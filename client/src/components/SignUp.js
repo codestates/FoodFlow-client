@@ -1,6 +1,8 @@
 import React from "react"
 import axios from "axios";
 import testPic from "../img/testPic.gif"
+import lettering from "../img/lettering.png"
+import Nav from "./Nav";
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -36,10 +38,13 @@ class SignUp extends React.Component {
 
     render() {
         return(
+            <div>
+                <Nav />
             <div className="totalSignUps">
-                 <img className="signUps__pic" src={testPic}></img>  
+                 <img className="signUps__pic" alt="profile" src={testPic}></img>  
                 <center className="signUps">
-                    <h1 className="signUps__title">회원가입</h1>
+                <img className="signUps__title" alt="profile" src={lettering}></img>
+                <div className="signUps__subTitle">Record Your Food</div>
                     <div className="signUps__body">
                         <div className="signUps__name signUp">
                             <input className="signUps__input"
@@ -77,6 +82,7 @@ class SignUp extends React.Component {
                          <div className="signUp__error">{this.state.errorMessage}</div>
                      </div>
                 </center>
+            </div>
             </div>
         )
     }
