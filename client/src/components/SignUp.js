@@ -10,7 +10,6 @@ class SignUp extends React.Component {
         this.state = {
             username: "",
             email: "",
-            nickname: "",
             password: "",
             errorMessage: ""
         };
@@ -23,14 +22,13 @@ class SignUp extends React.Component {
     
     // 가입에 필요한 필수 항목을 작성 시, 서버에 요청
     handleSignup = async () => {
-       const {username, email, nickname, password} = this.state
-       if(!username || !email || !nickname || !password){
+       const {username, email, password} = this.state
+       if(!username || !email || !password){
            this.setState({errorMessage: "모든 항목은 필수입니다"})
        } else {
-           await axios.post("http;//localhost:3000/signup", {
+           await axios.post("http://3.34.179.55:3000/", {
                username: username,
                email: email,
-               nickname: nickname,
                password: password
            })
        }
@@ -62,7 +60,7 @@ class SignUp extends React.Component {
                         </div>
                         <div className="signUps__passwordA signUp">
                             <input className="signUps__input"
-                                type="text"
+                                type="password"
                                 placeholder="비밀번호"
                                 onChange={this.handleInputValue("password")}
                             ></input>
@@ -71,7 +69,7 @@ class SignUp extends React.Component {
                             <input className="signUps__input"
                                 type="password"
                                 placeholder="비밀번호"
-                             onChange={this.handleInputValue("password")}
+                            //  onChange={this.handleInputValue("password")}
                             ></input>
                         </div>
                         <button 
