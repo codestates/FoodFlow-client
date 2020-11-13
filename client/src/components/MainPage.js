@@ -1,7 +1,6 @@
 import React from "react"
 import Nav from "./Nav";
 
-import { Link } from "react-router-dom";
 
 class MainPage extends React.Component {
     constructor(props) {

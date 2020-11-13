@@ -7,6 +7,7 @@ export default function Nav(props){
         <header className="navs">
             <Link to='/' className="mainPage__link">{<img className="navs__logo" src={fakeLogo} alt="profile"></img>}</Link>
             <div className="navs__tools">
+            <Link to='/mypage' className="myPage__link">My page</Link>
             <Link to='/signup' className="signUp__link">Sign up</Link>
             <Link to='/signin' className="signIn__link">Log in</Link>
             </div>
