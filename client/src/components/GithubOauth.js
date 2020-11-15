@@ -1,11 +1,14 @@
 const express = require('express')
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // axios는 HTTP 요청을 하기 위한 라이브러리입니다.
 const axios = require('axios')
 
 // GitHub에 OAuth 앱을 등록한 후, 발급받은 client id 및 secret을 입력합니다.
-const clientID = process.env.GITHUB_CLIENT_ID || '6c600e12bf58f2a72319';
-const clientSecret = process.env.GITHUB_CLIENT_SECRET || 'd0cb334cdeb457645ccf757acae18b7170caa348';
+const clientID = process.env.GITHUB_CLIENT_ID;
+const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
 const app = express()
 
@@ -46,5 +49,6 @@ function gitOauth() {
       {res.name}
     })
 }
+//github에서 받아온 회원 정보를 foodflow서버로 전송해줘야함
 
 export default gitOauth
