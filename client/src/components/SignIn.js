@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
+import MyPage from "./MyPage"
+
 
 class SignIn extends React.Component {
   constructor(props){
@@ -9,6 +11,7 @@ class SignIn extends React.Component {
     this.state = {
         email : "",
         password : "",
+        userId : "",
         errorMessage : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
@@ -21,14 +24,34 @@ class SignIn extends React.Component {
       if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
-          axios.post('https://localhost:3000/signin', { email : email, password : password})
-          .catch(console.log('err'))
+          axios.post('http://localhost:3000/user/signin', { email : email, password : password})
+          //Mypage 이동
+          .then((res) => {
+              if(res.status === 200) {
+                console.log(res.data)
+                this.setState({
+                    userId : res.data.id //signin에서 넘어온 id 값
+                })
+                console.log(this.state.userId)
+                // this.props.history.push('/mypage')           
+              }
+          })                                         
+          .catch(console.error('err'))
       }
     };
     render() {
         return (
             <div>
                 <Nav />
+                {/* Mypage로 this.state 전달 */}
+                <MyPage
+                  email = {this.state.email}
+                  password = {this.state.password}
+                  userId = {this.state.userId}
+                  />
+                  <div>
+                      {this.state.userId}
+                  </div>
             <div className="totalSignUps">
                 <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg" alt="profile"></img> 
                 <center className="signUps">
@@ -55,5 +78,4 @@ class SignIn extends React.Component {
         )
     }
   }
-
-  export default (SignIn);
+  export default withRouter(SignIn);
