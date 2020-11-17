@@ -36,7 +36,6 @@ import { render } from "react-dom";
      render() {
          return(
              <div>
-                <Nav />
                 <div className="totalMypages">
                     <div className="background1">
                         <center>
