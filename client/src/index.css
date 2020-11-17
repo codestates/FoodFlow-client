@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Poor+Story&display=swap");
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -25,12 +27,14 @@ code {
   position: fixed;
   display: flex;
   justify-content: space-between;
+  z-index: 4;
 }
 
 .navs__logo {
   display: flex;
   align-items: center;
-  padding-left: 30px;
+  padding-left: 25px;
+  margin-top: -1px;
 }
 
 .navs__tools {
@@ -57,6 +61,165 @@ code {
   text-decoration: none;
 }
 
+.mainPage__MainTop {
+  position: relative;
+}
+
+.mainPage__mainPic {
+  width: 100%;
+  z-index: 0;
+}
+
+.mainPage__title {
+  position: absolute;
+  font-size: 90px;
+  font-weight: 500;
+  color: #ffffff;
+  top: 40%;
+  left: 39%;
+  text-shadow: 1px 1px 4px black;
+}
+
+/* .mainPage__line {
+  position: absolute;
+  content: "";
+  width: 200px;
+  top: 60%;
+  left: 44.5%;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: 1px 1px 1px black;
+} */
+
+.mainPage__subTitle {
+  position: absolute;
+  font-size: 40px;
+  font-weight: 500;
+  color: #ffffff;
+  top: 66%;
+  left: 37%;
+  text-shadow: 1px 1px 4px black;
+}
+
+.pageList {
+  margin-top: 200px;
+  display: block;
+  overflow: visible;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 1px 200px;
+}
+
+.pageList__titleBody {
+  text-align: left;
+  margin-left: 24px;
+  margin-bottom: 20px;
+}
+
+.pageList__title {
+  font-size: 50px;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin-bottom: 4px;
+}
+
+.pageList__subtitle {
+  font-size: 19px;
+  font-weight: 400;
+  color: #7d7d7d;
+  margin-left: 4px;
+}
+
+.pageList__body {
+  margin-top: 0;
+  flex-wrap: wrap;
+  transform: translateZ(0);
+  overflow-x: auto;
+  scroll-padding: 24px;
+  width: 100%;
+  list-style: none;
+  display: inline-flex;
+  box-sizing: border-box;
+}
+
+.postSheets {
+  padding: 8px 26px;
+  flex-grow: 1;
+  max-width: 25%;
+  flex-basis: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-y: hidden;
+  margin-bottom: 30px;
+}
+
+.postSheets__total {
+  width: 290px;
+  height: 282px;
+  scroll-snap-align: start;
+  overflow: visible;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.postSheets__pic {
+  width: 100%;
+  align-self: normal;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.postSheets__body {
+  flex-direction: column;
+  padding: 8px 25px;
+  text-align: left;
+  background-color: rgb(240, 229, 229);
+  transform: translate3d(0, 0, 0);
+  transition: transform 400ms;
+  height: 100%;
+}
+
+.postSheets__text {
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(240, 229, 229);
+  font-family: "Poor Story", cursive;
+}
+
+.postSheets:hover .postSheets__body {
+  transform: translate3d(0, -65%, 0);
+  background-color: #292825;
+}
+
+.postSheets:hover .postSheets__foodName {
+  color: rgb(240, 229, 229);
+}
+
+.postSheets:hover .postSheets__username {
+  color: rgb(240, 229, 229);
+}
+
+.postSheets:hover .postSheets__rating {
+  color: rgb(240, 229, 229);
+}
+
+.postSheets__foodName {
+  margin-bottom: 1px;
+  font-weight: 500;
+  font-size: 25px;
+  font-family: "Black Han Sans", sans-serif;
+}
+
+.postSheets__username {
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 1px;
+  font-family: "Jua", sans-serif;
+}
+
 .totalSignUps {
   display: inline-flex;
 }
@@ -67,6 +230,15 @@ code {
   width: 350px;
   height: 540px;
   background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.signUps__pic {
+  margin-top: 150px;
+  width: 50%;
+  margin-left: 40px;
+  margin-right: 30px;
+  border-radius: 15px;
 }
 
 .signUps__title {
@@ -97,7 +269,7 @@ code {
 }
 
 .signUps__passwordB {
-  padding-bottom: 20px;
+  padding-bottom: 11px;
 }
 
 .signUps__btn {
@@ -105,12 +277,52 @@ code {
   height: 30px;
   background-color: #fbd46d;
   border: 1px solid #dbdbdb;
+  border-radius: 5px;
 }
 
 .signUp__error {
-  padding-top: 28px;
+  padding-top: 19px;
   color: #c83c0d;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: "Jua", sans-serif;
+}
+
+.is-valid {
+  box-shadow: 0px 0px 10px rgb(10, 233, 40);
+}
+
+.is-invalid {
+  box-shadow: 0px 0px 10px red;
+}
+
+.signUps__passwordValid {
+  color: #0bdd27;
+  margin-top: 10px;
+  padding-right: 140px;
+  font-family: "Jua", sans-serif;
+}
+
+.signUps__passwordInvalid {
+  color: #c83c0d;
+  margin-top: 10px;
+  padding-right: 96px;
+  font-family: "Jua", sans-serif;
+}
+
+.signIns__pic {
+  margin-top: 150px;
+  width: 450px;
+  margin-right: 30px;
+  border-radius: 15px;
+}
+
+.signIns__noId {
+  margin-top: 45px;
+}
+
+.signIns__gitHub {
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
 .mypageMain {

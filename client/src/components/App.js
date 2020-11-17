@@ -4,11 +4,14 @@ import MyPage from "./MyPage"
 import SignUp from "./SignUp"
 import SignIn from "./SignIn"
 import { Switch, Route } from "react-router-dom";
+// import data from "../PostSheetTest/testPostInfo.js"
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      
+    }
   }
   render() {
     return (
