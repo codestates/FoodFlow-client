@@ -1,4 +1,4 @@
-
+import React from "react";
 import axios from "axios";
 import Star from "../img/star.png";
 import Star0 from "../img/star0.png";
@@ -15,102 +15,164 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 //  .then(() => console.log('success posting'))
 //}
 
-let locked = 0;
-function show(star) {
-  if (locked) {
-    return;
+//let locked = 0;
+//function show(star) {
+//  if (locked) {
+//    return;
+//  }
+//  let image;
+//  let el;
+//  let e = document.getElementById('startext');
+//  let stateMsg;
+//
+//  for (let i=1; i<=star; i++) {
+//    image = 'image' + i;
+//    el =document.getElementById(image);
+//    el.src = {Star1};
+//  }
+//
+//  switch (star) {
+//    case 1: stateMsg = 'testtext';
+//    break;
+//    case 2: stateMsg = 'pelqpeiq';
+//    break;
+//  }
+//  e.innerHTML = stateMsg;
+//}
+//
+//function noshow(star) {
+//  if (locked) {
+//    return;
+//  }
+//  let image;
+//  let el;
+//  
+//  for (let i=1; i<=star; i++) {
+//    image = 'image'+i;
+//    el = document.getElementById(image);
+//    el.src = {Star0};
+//  }
+//}
+//
+//function lock(star) {
+//  show(star);
+//  locked = 1;
+//}
+//
+//function mark(star) {
+//  lock(star);
+//  alert("선택2" + star);
+//  document.cmtform.star.value = star;
+//}
+
+
+class PostArea extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+        email : "",
+        password : "",
+        errorMessage : ""
+    };
+    this.handleInputValue = this.handleInputValue.bind(this);
   }
-  let image;
-  let el;
-  let e = document.getElementById('startext');
-  let stateMsg;
-
-  for (let i=1; i<=star; i++) {
-    image = 'image' + i;
-    el =document.getElementById(image);
-    el.src = {Star1};
-  }
-
-  switch (star) {
-    case 1: stateMsg = 'testtext';
-    break;
-    case 2: stateMsg = 'pelqpeiq';
-    break;
-  }
-  e.innerHTML = stateMsg;
-}
-
-function noshow(star) {
-  if (locked) {
-    return;
-  }
-  let image;
-  let el;
-  
-  for (let i=1; i<=star; i++) {
-    image = 'image'+i;
-    el = document.getElementById(image);
-    el.src = {Star0};
-  }
-}
-
-function lock(star) {
-  show(star);
-  locked = 1;
-}
-
-function mark(star) {
-  lock(star);
-  alert("선택2" + star);
-  document.cmtform.star.value = star;
-}
-
-export default function postArea() {
+  handleInputValue = (key) => (e) => {
+      this.setState({ [key] : e.target.value });
+  };
+  postArea = () => {}
+  render() {
     return (
-        <dev>
-            <div id="main">
-              <h1>chatterbox</h1>
-              <div id="send">
-                <form class="submit">
-                  <textarea class="inputChat"></textarea>
-                  <select className="rating">
-                    <option value="">별점선택</option>
-                    <option value="1.0">1.0</option>
-                    <option value="0.5">2.0</option>
-                    <option value="0.5">3.0</option>
-                    <option value="0.5">4.0</option>
-                    <option value="0.5">5.0</option>
-                  </select>
-                  <div className="starEmpty">
-                    <div className="starRating"></div>
-                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                  </div>
-                  <div>
-                    <img className="teststar" src={Star} alt='text' />
-                  </div>
-                  <span className="numberRating"></span>
-                  <button type="submit" >글쓰기</button>
-                </form>
-              </div>
+      <div>
+          <div id="main">
+            <h1>testbox</h1>
+            <h1>et</h1>
+            <div id="send">
+              <form class="submit">
+                <div>
+                  <input className="inputFoodName" type="text" placeholder="음식 이름 입력"></input>
+                </div>
+                <textarea class="inputChat"></textarea>
+                <select className="rating">
+                  <option value="">별점선택</option>
+                  <option value="1.0">1.0</option>
+                  <option value="0.5">2.0</option>
+                  <option value="0.5">3.0</option>
+                  <option value="0.5">4.0</option>
+                  <option value="0.5">5.0</option>
+                </select>
+                <div className="starEmpty">
+                  <div className="starRating"></div>
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                </div>
+                <div>
+                  <img className="teststar" src={Star} alt='text' />
+                </div>
+                <span className="numberRating"></span>
+                <button type="submit" >글쓰기</button>
+              </form>
             </div>
-        </dev>
+          </div>
+      </div>
     )
+  }
 }
 
-const starsTotal = 5;
+export default PostArea;
 
-const rating = 3.5;
-
-document.addEventListener('DOMContentLoasded', getRatings);
-
-function getRatings() {
-  const starPercentage = (rating / starsTotal) * 100;
-
-  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}`;
-
-  document.querySelector(`.starRating`).getElementsByClassName.width = starPercentageRounded;
-}
+//export default function postArea() {
+//    return (
+//        <div>
+//            <div id="main">
+//              <h1>testbox</h1>
+//              <h1>et</h1>
+//              <div id="send">
+//                <form class="submit">
+//                  <div>
+//                    <input className="inputFoodName" type="text" placeholder="음식 이름 입력"></input>
+//                  </div>
+//                  <textarea class="inputChat"></textarea>
+//                  <select className="rating">
+//                    <option value="">별점선택</option>
+//                    <option value="1.0">1.0</option>
+//                    <option value="0.5">2.0</option>
+//                    <option value="0.5">3.0</option>
+//                    <option value="0.5">4.0</option>
+//                    <option value="0.5">5.0</option>
+//                  </select>
+//                  <div className="starEmpty">
+//                    <div className="starRating"></div>
+//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+//                  </div>
+//                  <div>
+//                    <img className="teststar" src={Star} alt='text' />
+//                  </div>
+//                  <span className="numberRating"></span>
+//                  <button type="submit" >글쓰기</button>
+//                </form>
+//              </div>
+//            </div>
+//        </div>
+//    )
+//}
+//
+//const starsTotal = 5;
+//
+//const rating = 3.5;
+//
+//document.addEventListener('DOMContentLoasded', getRatings);
+//
+//function getRatings() {
+//  const starPercentage = (rating / starsTotal) * 100;
+//
+//  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}`;
+//
+//  document.querySelector(`.starRating`).getElementsByClassName.width = starPercentageRounded;
+//}
