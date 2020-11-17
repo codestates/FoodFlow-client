@@ -1,5 +1,6 @@
 import React from "react"
 import Nav from "./Nav";
+import PostArea from "./PostArea";
 import { render } from "react-dom";
 
 
@@ -36,6 +37,9 @@ import { render } from "react-dom";
      render() {
          return(
              <div>
+                <div>
+                <PostArea />
+                </div>
                 <div className="totalMypages">
                     <div className="background1">
                         <center>
