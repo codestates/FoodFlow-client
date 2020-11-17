@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
+import logInImg from "../img/logInImg.gif"
+import lettering from "../img/lettering.png"
 
 class SignIn extends React.Component {
   constructor(props){
@@ -30,9 +32,10 @@ class SignIn extends React.Component {
             <div>
                 <Nav />
             <div className="totalSignUps">
-                <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg" alt="profile"></img> 
+                <img className="signIns__pic" src={logInImg} alt="profile"></img> 
                 <center className="signUps">
-                    <h1 className="signUps__title">로그인</h1>
+                <img className="signUps__title" alt="profile" src={lettering}></img>
+                <div className="signUps__subTitle">Welcome Food Zone</div>
                     <div className="signUps__body">
                         <div className="signUps__name signUp">
                             <input className="signUps__input" type='email' placeholder='이메일' onChange={this.handleInputValue("email")}></input>
@@ -40,10 +43,10 @@ class SignIn extends React.Component {
                         <div>
                             <input className="signUps__input" type='password' placeholder='비밀번호' onChange={this.handleInputValue("password")}></input>
                         </div>
-                        <div>
+                        <div className="signIns__noId">
                             <Link to='/signup'>아직 아이디가 없으신가요?</Link>
                         </div>
-                        <div>
+                        <div className="signIns__gitHub">
                         <a href="https://github.com/login/oauth/authorize?client_id=6c600e12bf58f2a72319&redirect_uri=https://6a24503ce00f.ngrok.io">GitHub로 로그인</a>
                         </div>
                         <button className="signUps__btn" type='submit' onClick={this.handleSignIn}>로그인</button> 

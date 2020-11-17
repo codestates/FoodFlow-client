@@ -1,6 +1,6 @@
 import React from "react"
 import axios from "axios";
-import testPic from "../img/testPic.gif"
+import phoPic from "../img/pho.gif"
 import lettering from "../img/lettering.png"
 import Nav from "./Nav";
 
@@ -11,14 +11,52 @@ class SignUp extends React.Component {
             username: "",
             email: "",
             password: "",
-            errorMessage: ""
+            confirmPassword: "",
+            errorMessage: "",
+            errorPassword: ""
         };
         this.handleInputValue = this.handleInputValue.bind(this);
+        //this.handlePasswordError = this.handlePasswordError.bind(this);
     }
     // state 상황을 변화시켜주는 기능
     handleInputValue = (key) => (e) => {
         this.setState({ [key]: e.target.value });
       };
+
+    doesPasswordMatch() {
+        const { password, confirmPassword } = this.state;
+        return password === confirmPassword;
+      };
+
+    confirmPasswordClassName() {
+        const { confirmPassword } = this.state;
+      
+        if (confirmPassword) {
+          return this.doesPasswordMatch() ? 'is-valid' : 'is-invalid';
+        }
+    }
+
+    renderFeedbackMessage() {
+        const { confirmPassword } = this.state;
+      
+        if (confirmPassword) {
+          if (!this.doesPasswordMatch()) {
+            return (
+              <div className="signUps__passwordInvalid">패스워드가 일치하지 않습니다</div>
+            );
+          } else if (this.doesPasswordMatch()){
+            return (
+                <div className="signUps__passwordValid">패스워드가 일치합니다</div>
+              );
+          }
+        }
+      }
+
+    // handlePasswordError = (key) => (e) => {
+    //     if(e.target.value !== this.state.password){
+    //         this.setState({errorPassword: "비밀번호가 같지 않습니다"})
+    //     }
+    // }
     
     // 가입에 필요한 필수 항목을 작성 시, 서버에 요청
     handleSignup = async () => {
@@ -26,7 +64,7 @@ class SignUp extends React.Component {
        if(!username || !email || !password){
            this.setState({errorMessage: "모든 항목은 필수입니다"})
        } else {
-           await axios.post("http://3.34.179.55:3000/", {
+           await axios.post("http://3.34.179.55:3000/user/signup", {
                username: username,
                email: email,
                password: password
@@ -39,7 +77,7 @@ class SignUp extends React.Component {
             <div>
                 <Nav />
             <div className="totalSignUps">
-                 <img className="signUps__pic" alt="profile" src={testPic}></img>  
+                 <img className="signUps__pic" alt="profile" src={phoPic}></img>  
                 <center className="signUps">
                 <img className="signUps__title" alt="profile" src={lettering}></img>
                 <div className="signUps__subTitle">Record Your Food</div>
@@ -66,11 +104,12 @@ class SignUp extends React.Component {
                             ></input>
                         </div>
                         <div className="signUps__passwordB signUp">
-                            <input className="signUps__input"
+                            <input className={`signUps__input ${this.confirmPasswordClassName()}`}
                                 type="password"
-                                placeholder="비밀번호"
-                            //  onChange={this.handleInputValue("password")}
+                                placeholder="비밀번호 확인"
+                                onChange={this.handleInputValue("confirmPassword")}
                             ></input>
+                            {this.renderFeedbackMessage()}
                         </div>
                         <button 
                           className="signUps__btn"
