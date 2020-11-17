@@ -1,5 +1,6 @@
 import React from "react";
 import MainPage from "./MainPage"
+import MyPage from "./MyPage"
 import SignUp from "./SignUp"
 import SignIn from "./SignIn"
 import { Switch, Route } from "react-router-dom";
@@ -18,6 +19,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/signin' render={() => <SignIn />} />
           <Route exact path='/signup' render={() => <SignUp />} />
+          <Route exact path='/mypage' render={() => <MyPage />} />
           <Route exact path='/' render={() => <MainPage />} />
         </Switch>
       </div>

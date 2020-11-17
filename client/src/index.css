@@ -48,8 +48,13 @@ code {
   margin-right: 20px;
 }
 
+.myPage__link {
+  margin-right: 20px;
+}
+
 .signUp__link,
-.signIn__link {
+.signIn__link,
+.myPage__link {
   font-size: large;
   font-weight: 700;
   color: #2b2b2b;
@@ -319,3 +324,89 @@ code {
   margin-top: 10px;
   margin-bottom: 50px;
 }
+
+.mypageMain {
+  position: relative;
+  top: 100px;
+  border: 1px solid #dbdbdb;
+  width: 1350px;
+  height: 780px;
+  background-color: #ffffff;
+}
+
+.background1 {
+  background-color: #EDE9E6;
+  background-image: linear-gradient(to bottom, #EDE9E6 0%, #FFF 100%);
+}
+
+.background2 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #FFF;
+}
+
+.starEmpty {
+  position: relative;
+  display: inline-block;
+}
+
+.starRating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 30%;
+}
+
+.starEmpty::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.starRating::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-weight: 900;
+  color: #f8ce0b;
+}
+
+.star-rating {width:304px; }
+.star-rating,.star-rating span {display:inline-block; height:55px; overflow:hidden; background:url(./img/star.png)no-repeat; }
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
+
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:5px;
+  margin-bottom:5px;
+  min-width:150px;
+  min-height: 75px;
+  border-width: 1px;
+}
+
+.file {}
+
+.inputFoodName {
+  display: flex;
+  min-height: 1vh;
+}
+
+.rating {
+  display: flex;
+}
+
+.inputChat {
+  display: flex;
+  position: static;
+  justify-content: center;
+  align-items: center;
+  min-width: 325px;
+  width: 525px;
+  min-height: 30px;
+}
+
+.submitBtn {}

@@ -23,7 +23,7 @@ class SignIn extends React.Component {
       if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
-          axios.post('https://localhost:3000/signin', { email : email, password : password})
+          axios.post('http://3.34.179.55:3000/user/signin', { email : email, password : password})
           .catch(console.log('err'))
       }
     };
