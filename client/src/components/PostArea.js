@@ -1,15 +1,18 @@
 import React from "react";
 import axios from "axios";
-import Star from "../img/star.png";
-import Star0 from "../img/star0.png";
-import Star1 from "../img/star1.png";
+//import Star from "../img/star.png";
+//import Star0 from "../img/star0.png";
+//import Star1 from "../img/star1.png";
+//
+//import { faStar } from "@fortawesome/free-solid-svg-icons"
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import { faStar } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+//const multer = require('multer');
 
-//submit 변수 안에 username, name, ... 등등?
-//multer면 header설정이 있어서 데이터를 따로 post해야하는지?
+//multer면 header설정이 있어서 데이터를 따로 post해야하는지? => 정환님이 한번에 전송하는 법 알아냄
 //axios.post에서 header설정 : axios.post('url', { data }, config) config = {header:~}
+//name음식 이름 post해서 res로 foodId 받아오기
+
 //function submit() {
 //  axios.post('http://3.34.179.55:3000/user/posts', { username, name, foodImage, rating, text })
 //  .then(() => console.log('success posting'))
@@ -70,29 +73,55 @@ class PostArea extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        email : "",
-        password : "",
-        errorMessage : ""
+      file: null,
+      fileName: "",
+      username : "",
+      name : "",
+      foodId : "",
+      rating : "",
+      text : "",
+      errorMessage : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
   handleInputValue = (key) => (e) => {
       this.setState({ [key] : e.target.value });
   };
-  postArea = () => {}
+  handleFileChange = (e) => {
+    this.setState({
+      file: e.target.files[0],
+      fileName: e.target.value
+    })
+  }
+  submitPost = () => {
+    const { username, name, rating, text } = this.state;
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    }
+    if ( !name || !text ) {
+      this.setState({errorMessage : '빈 칸을 입력해주세요'});
+    } else {
+      axios.post('http://3.34.179.55:3000/user/post', { name : name })
+      .then ((res) => {
+        this.setState({foodId : {res}})
+      })
+      .then (axios.post('http://3.34.179.55:3000/user/post', { username : username, name : name, rating : rating, text : text }, config))
+      .catch (console.log('err'))
+    }
+  }
   render() {
     return (
       <div>
           <div id="main">
-            <h1>testbox</h1>
-            <h1>et</h1>
             <div id="send">
-              <form class="submit">
+              <form class="submit" onSubmit={this.submitPost}>
+                  <input className="file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
                 <div>
-                  <input className="inputFoodName" type="text" placeholder="음식 이름 입력"></input>
+                  <input className="inputFoodName" type="text" placeholder="음식 이름 입력" onChange={this.handleInputValue("name")}></input>
                 </div>
-                <textarea class="inputChat"></textarea>
-                <select className="rating">
+                <select className="rating" onChange={this.handleInputValue("rating")}>
                   <option value="">별점선택</option>
                   <option value="1.0">1.0</option>
                   <option value="0.5">2.0</option>
@@ -100,19 +129,10 @@ class PostArea extends React.Component {
                   <option value="0.5">4.0</option>
                   <option value="0.5">5.0</option>
                 </select>
-                <div className="starEmpty">
-                  <div className="starRating"></div>
-                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-                </div>
-                <div>
-                  <img className="teststar" src={Star} alt='text' />
-                </div>
-                <span className="numberRating"></span>
-                <button type="submit" >글쓰기</button>
+                <textarea class="inputChat" onChange={this.handleInputValue("text")}></textarea>
+                <div>{this.state.errorMessage}</div>
+                <button type="submit">글쓰기</button>
+                <div> {this.state.errorMessage} </div>
               </form>
             </div>
           </div>
@@ -123,46 +143,6 @@ class PostArea extends React.Component {
 
 export default PostArea;
 
-//export default function postArea() {
-//    return (
-//        <div>
-//            <div id="main">
-//              <h1>testbox</h1>
-//              <h1>et</h1>
-//              <div id="send">
-//                <form class="submit">
-//                  <div>
-//                    <input className="inputFoodName" type="text" placeholder="음식 이름 입력"></input>
-//                  </div>
-//                  <textarea class="inputChat"></textarea>
-//                  <select className="rating">
-//                    <option value="">별점선택</option>
-//                    <option value="1.0">1.0</option>
-//                    <option value="0.5">2.0</option>
-//                    <option value="0.5">3.0</option>
-//                    <option value="0.5">4.0</option>
-//                    <option value="0.5">5.0</option>
-//                  </select>
-//                  <div className="starEmpty">
-//                    <div className="starRating"></div>
-//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-//                    <FontAwesomeIcon icon={ faStar } className="starEmpty" />
-//                  </div>
-//                  <div>
-//                    <img className="teststar" src={Star} alt='text' />
-//                  </div>
-//                  <span className="numberRating"></span>
-//                  <button type="submit" >글쓰기</button>
-//                </form>
-//              </div>
-//            </div>
-//        </div>
-//    )
-//}
-//
 //const starsTotal = 5;
 //
 //const rating = 3.5;
@@ -176,3 +156,18 @@ export default PostArea;
 //
 //  document.querySelector(`.starRating`).getElementsByClassName.width = starPercentageRounded;
 //}
+
+/*
+                <div className="starEmpty">
+                  <div className="starRating"></div>
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                </div>
+                <div>
+                  <img className="teststar" src={Star} alt='text' />
+                </div>
+                <span className="numberRating"></span>
+*/
