@@ -3,6 +3,9 @@ import Nav from "./Nav";
 import PostArea from "./PostArea";
 import MyPageList from "./MyPageList";
 import { render } from "react-dom";
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 //function MyPage(props) {
 //    const { userinfo } = props;
