@@ -1,8 +1,8 @@
 import React from "react"
 import Nav from "./Nav";
 import PostArea from "./PostArea";
+import MyPageList from "./MyPageList";
 import { render } from "react-dom";
-
 
 //function MyPage(props) {
 //    const { userinfo } = props;
@@ -32,7 +32,23 @@ import { render } from "react-dom";
      constructor(props) {
          super(props);
          this.state = {
+             postInfo: [
+                { id: 1,
+                username: "Mr.Harvey", 
+                foodname: "Pizza",
+                text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
+                rating: 4}, 
+                {id: 2,
+                username: "Mis.Laby", 
+                foodname: "짜장면",
+                text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
+                rating: 2}
+             ]
          }
+     }
+     pageList = (props) => {
+         return < div className="myPageList" >{props.postInfo.map(el =>
+             <MyPageList />)}</div >
      }
      render() {
          return(
@@ -43,6 +59,9 @@ import { render } from "react-dom";
                 <div className="totalMypages">
                     <div className="background1">
                         <center>
+                            <div>
+                                <pageList />
+                            </div>
                          <div className="mypageMain">테스트박스</div>
                          </center>
                     </div>
