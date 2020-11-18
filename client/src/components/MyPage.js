@@ -1,7 +1,7 @@
 import React from "react"
-import Nav from "./Nav";
+//import Nav from "./Nav";
 import PostArea from "./PostArea";
-import { render } from "react-dom";
+//import { render } from "react-dom";
 
 
 //function MyPage(props) {
