@@ -10,8 +10,8 @@ export default function PostSheet(props){
                src={testPostPic} 
                className="postSheets__pic"></img>
            <div className="postSheets__body">
-                <div className="postSheets__foodName">{props.post.foodname}</div>
-                <div className="postSheets__username">{props.post.username}</div>
+                <div className="postSheets__foodName">{props.post.food.name}</div>
+                <div className="postSheets__username">{props.post.user.username}</div>
                 <div className="postSheets__rating">{props.post.rating}</div>
                 <div className="postSheets__hoverSide">
                 <div className="postSheets__text">{props.post.text}</div>

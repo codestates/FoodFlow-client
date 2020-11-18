@@ -3,6 +3,8 @@ import axios from "axios";
 import phoPic from "../img/pho.gif"
 import lettering from "../img/lettering.png"
 import Nav from "./Nav";
+import { Link, withRouter } from "react-router-dom";
+
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -69,6 +71,7 @@ class SignUp extends React.Component {
                email: email,
                password: password
            })
+           this.props.history.push("/");
        }
     }
 
@@ -125,4 +128,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

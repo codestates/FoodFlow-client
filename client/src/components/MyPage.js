@@ -1,9 +1,10 @@
 import React from "react"
-import Nav from "./Nav";
+//import Nav from "./Nav";
 import PostArea from "./PostArea";
 import MyPageList from "./MyPageList";
-import { render } from "react-dom";
+
 import axios from "axios";
+//import { render } from "react-dom";
 
 axios.defaults.withCredentials = true;
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import Nav from "./Nav";
 import logInImg from "../img/logInImg.gif"
@@ -25,6 +25,7 @@ class SignIn extends React.Component {
       } else {
           axios.post('http://3.34.179.55:3000/user/signin', { email : email, password : password})
           .catch(console.log('err'))
+          this.props.history.push("/");
       }
     };
     render() {
@@ -59,4 +60,4 @@ class SignIn extends React.Component {
     }
   }
 
-  export default (SignIn);
+  export default withRouter(SignIn);
