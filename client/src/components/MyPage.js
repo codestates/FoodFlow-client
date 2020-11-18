@@ -37,13 +37,17 @@ axios.defaults.withCredentials = true;
          this.state = {
              postInfo: [
                 { id: 1,
-                username: "Mr.Harvey", 
-                name: "Pizza",
+                    user: {
+                username: "Mr.Harvey"}, 
+                food: {
+                name: "Pizza"},
                 text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
                 rating: 4}, 
                 {id: 2,
-                username: "Mis.Laby", 
-                name: "짜장면",
+                    user: {
+                username: "Mis.Laby"}, 
+                food: {
+                name: "짜장면"},
                 text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
                 rating: 2}
              ]
