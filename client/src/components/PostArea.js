@@ -76,9 +76,6 @@ class PostArea extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      foodImage: null,
-      foodImageName: "",
-      username : "",
       name : "",
       foodId : "",
       rating : "",
@@ -109,16 +106,8 @@ class PostArea extends React.Component {
       axios.post('http://3.34.179.55:3000/food/write', { name : name })
       .then ((res) => {
         this.setState({foodId : res.data.id})
-        const { foodId } = this.state;
-        const formData = new FormData();
-        formData.append('foodImage', this.state.foodImage)
-        formData.append('foodId', foodId)
-        formData.append('rating', rating)
-        formData.append('text', text)
-
-        return formData
       })
-      .then ((formData) => axios.post('http://3.34.179.55:3000/user/posts/write', formData, config))
+      .then (() => axios.post('http://3.34.179.55:3000/user/posts/write', { text: text, rating: rating, id: this.state.foodId }, config))
       .catch (console.log('err'))
     }
   }
@@ -128,7 +117,6 @@ class PostArea extends React.Component {
           <div id="main">
             <div id="send">
               <form class="submit" onSubmit={this.submitPost}>
-                  <input className="foodImage" type="file" foodImage={this.state.foodImage} value={this.state.foodImageName} onChange={this.handlefoodImageChange} /><br/>
                 <div>
                   <input className="inputFoodName" type="text" placeholder="음식 이름 입력" onChange={this.handleInputValue("name")}></input>
                 </div>
@@ -141,7 +129,6 @@ class PostArea extends React.Component {
                   <option value="0.5">5.0</option>
                 </select>
                 <textarea class="inputChat" onChange={this.handleInputValue("text")}></textarea>
-                <div>{this.state.errorMessage}</div>
                 <button className="submitBtn" type="submit">글쓰기</button>
                 <div> {this.state.errorMessage} </div>
               </form>
