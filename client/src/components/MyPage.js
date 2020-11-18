@@ -1,23 +1,19 @@
 import React from "react";
 import axios, { post } from 'axios';
 import FormData from 'form-data'
-
 axios.defaults.withCredentials = true;
-
 class MyPage extends React.Component {
-
     constructor(props) {
       super(props);
       this.state ={
         file: null,
         imgPath: null,
-        foodId : null,                    
+        foodId : null
       }
       this.onFormSubmit = this.onFormSubmit.bind(this)
       this.onChange = this.onChange.bind(this)
-      this.fileUpload = this.fileUpload.bind(this)      
+      this.fileUpload = this.fileUpload.bind(this)
     }
-    
     // componentDidMount(props) {
     //     console.log(props)
     // }
@@ -33,14 +29,11 @@ class MyPage extends React.Component {
         })
       })
     }
-    
     //파일 선택 버튼 클릭 후 업로드할 파일을 선택하면,
     //변경된 파일의 정보를 this.state.file 속성에 담는다.
     onChange(e) {
       this.setState({file:e.target.files[0]})
     }
-
-
     fileUpload(file){
       const url = 'http://localhost:3000/user/upload/profile';
       const formData = new FormData();
@@ -55,27 +48,23 @@ class MyPage extends React.Component {
       }
       return  post(url, formData, config)
     }
-    
     getImagefile() {
-        axios.get(`http://localhost:3000/${this.state.imgPath}`)        
+        axios.get(`http://localhost:3000/${this.state.imgPath}`)
     }
-
-    
     foodId() {
         axios
             .post("http://localhost:3000/food/write", {
-                name: "미쳤다6."
+                name: "미쳤다22."
             })
             .then((res) => {
                 this.setState({
                     foodId: res.data.id
-                })                
+                })
             })
             .then(() =>{
                 return this.posting();
-            })   
+            })
         }
-
     posting() {
         axios.post("http://localhost:3000/posts/write", {
             text: "짜장면 맛있다.",
@@ -87,20 +76,14 @@ class MyPage extends React.Component {
                 console.log(res.data.id)
             })
     }
-
-
-
     // 해당 유저의 모든 post 정보 받아오기
     // getPosts(props){
     //     console.log(props.userid)
-        
     //     axios.get("http://localhost:3000/mypage")
     //     .then((res) => {
     //         console.log(res)
     //     })
     // }
-
-
     render() {
       return (
           <>
@@ -111,22 +94,24 @@ class MyPage extends React.Component {
           <input type="file" onChange={this.onChange} />
           <button type="submit">Upload</button>
         </form>
-
         {/* association test */}
         <button
             onClick={this.foodId.bind(this)}>
             foodID 테스트
         </button>
-        <button
-            onClick={this.postImage.bind(this)}>
-            postImage(multer)
-        </button>
+        {/* <button
+            onClick={this.posting.bind(this)}>
+            posting 테스트
+        </button> */}
         <div>
           <img src={`http://localhost:3000/${this.state.imgPath}`} width = "100px" alt=""/>
-        </div>  
+        </div>
+        {/* <button
+        onClick = {this.getPosts.bind(this)}>
+        getPosts 테스트
+        </button>               */}
         </>
      )
     }
   }
-  
 export default (MyPage);
