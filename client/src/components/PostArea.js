@@ -102,7 +102,7 @@ class PostArea extends React.Component {
       .then ((res) => {
         this.setState({foodId : res.data.id})
       })
-      .then (() => axios.post('http://3.34.179.55:3000/user/posts/write', { text: text, rating: rating, id: this.state.foodId }))
+      .then (() => axios.post('http://localhost:3001/user/posts/write', { text: text, rating: rating, id: this.state.foodId }))
       .catch (console.log('err'))
     }
   }

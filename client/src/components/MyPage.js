@@ -63,7 +63,7 @@ axios.defaults.withCredentials = true;
          )
      }
      myPost = () => {
-         axios.get('http://3.34.179.55:3000/mypage')
+         axios.get('http://3.34.179.55:3001/mypage')
          .then((res) => {
              this.setState({ postInfo : res.data })
          })
