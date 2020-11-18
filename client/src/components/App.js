@@ -18,12 +18,12 @@ class App extends React.Component {
   }
 
   async handleResponseSuccess(login) {
-    let successInfo = await axios.get("http://3.34.179.55:3000//mypage")
-    
+    let successInfo = await axios.get("http://localhost:3001/mypage")
+    console.log(successInfo)
     if(!successInfo){
       this.setState({userInfo: ""})
     } else {
-      this.setState({isLogOut: true, userInfo: successInfo.user.username})
+      this.setState({isLogOut: true, userInfo: successInfo.user})
       this.props.history.push('/');
     }
   }

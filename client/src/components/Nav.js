@@ -9,7 +9,7 @@ export default function Nav(props){
             <Link to='/' className="mainPage__link">{<img className="navs__logo" src={Logo} alt="profile"></img>}</Link>
                 <div className={`navs__tools`}>
                 <div className="navs__userConnect">
-                    {props.isLogOut ? <img src={rabbit} className="navs__rabbitPic" /> : ``}
+                    {props.isLogOut ? <img src={rabbit} alt="profile" className="navs__rabbitPic" /> : ``}
                     {props.isLogOut ? <div className="navs__userConnectText">Welcome{props.userInfo}</div> : ``}
                 </div>
                 {props.isLogOut ? <Link to='/mypage' className={`myPage__link`}>My page</Link> : <Link to='/signup' className={`signUp__link`}>Sign up</Link>}
