@@ -98,7 +98,7 @@ class PostArea extends React.Component {
     if ( !name || !text ) {
       this.setState({errorMessage : '빈 칸을 입력해주세요'});
     } else {
-      axios.post('http://3.34.179.55:3000/food/write', { name : name })
+      axios.post('http://localhost:3001/food/write', { name : name })
       .then ((res) => {
         this.setState({foodId : res.data.id})
       })
