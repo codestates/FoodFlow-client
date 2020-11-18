@@ -48,7 +48,7 @@ class PostArea extends React.Component {
     if ( !name || !text ) {
       this.setState({errorMessage : '빈 칸을 입력해주세요'});
     } else {
-      axios.post('http://3.34.179.55:3000/food/write', { name : name })
+      axios.post('http://localhost:3001/food/write', { name : name })
       .then ((res) => {
         this.setState({foodId : res.data.foodId})
         const { foodId } = this.state;
@@ -60,7 +60,7 @@ class PostArea extends React.Component {
 
         return formData
       })
-      .then ((formData) => axios.post('http://3.34.179.55:3000/user/posts/write', formData, config))
+      .then ((formData) => axios.post('http://localhost:3001/user/posts/write', formData, config))
       .catch (console.log('err'))
     }
   }

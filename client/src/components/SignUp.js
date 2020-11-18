@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios";
 import phoPic from "../img/pho.gif"
 import lettering from "../img/lettering.png"
-import Nav from "./Nav";
+//import Nav from "./Nav";
 import { Link, withRouter } from "react-router-dom";
 
 
@@ -53,12 +53,6 @@ class SignUp extends React.Component {
           }
         }
       }
-
-    // handlePasswordError = (key) => (e) => {
-    //     if(e.target.value !== this.state.password){
-    //         this.setState({errorPassword: "비밀번호가 같지 않습니다"})
-    //     }
-    // }
     
     // 가입에 필요한 필수 항목을 작성 시, 서버에 요청
     handleSignup = async () => {
@@ -78,7 +72,7 @@ class SignUp extends React.Component {
     render() {
         return(
             <div>
-                <Nav />
+            
             <div className="totalSignUps">
                  <img className="signUps__pic" alt="profile" src={phoPic}></img>  
                 <center className="signUps">
