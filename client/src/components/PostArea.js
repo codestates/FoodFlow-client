@@ -1,5 +1,8 @@
 import React from "react";
 import axios from "axios";
+
+axios.defaults.withCredentials = true;
+
 //import Star from "../img/star.png";
 //import Star0 from "../img/star0.png";
 //import Star1 from "../img/star1.png";
@@ -12,6 +15,61 @@ import axios from "axios";
 //multer면 header설정이 있어서 데이터를 따로 post해야하는지? => 정환님이 한번에 전송하는 법 알아냄
 //axios.post에서 header설정 : axios.post('url', { data }, config) config = {header:~}
 //name음식 이름 post해서 res로 foodId 받아오기
+
+//function submit() {
+//  axios.post('http://3.34.179.55:3000/user/posts', { username, name, foodImage, rating, text })
+//  .then(() => console.log('success posting'))
+//}
+
+//let locked = 0;
+//function show(star) {
+//  if (locked) {
+//    return;
+//  }
+//  let image;
+//  let el;
+//  let e = document.getElementById('startext');
+//  let stateMsg;
+//
+//  for (let i=1; i<=star; i++) {
+//    image = 'image' + i;
+//    el =document.getElementById(image);
+//    el.src = {Star1};
+//  }
+//
+//  switch (star) {
+//    case 1: stateMsg = 'testtext';
+//    break;
+//    case 2: stateMsg = 'pelqpeiq';
+//    break;
+//  }
+//  e.innerHTML = stateMsg;
+//}
+//
+//function noshow(star) {
+//  if (locked) {
+//    return;
+//  }
+//  let image;
+//  let el;
+//  
+//  for (let i=1; i<=star; i++) {
+//    image = 'image'+i;
+//    el = document.getElementById(image);
+//    el.src = {Star0};
+//  }
+//}
+//
+//function lock(star) {
+//  show(star);
+//  locked = 1;
+//}
+//
+//function mark(star) {
+//  lock(star);
+//  alert("선택2" + star);
+//  document.cmtform.star.value = star;
+//}
 
 
 class PostArea extends React.Component {
@@ -50,7 +108,7 @@ class PostArea extends React.Component {
     } else {
       axios.post('http://3.34.179.55:3000/food/write', { name : name })
       .then ((res) => {
-        this.setState({foodId : res.data.foodId})
+        this.setState({foodId : res.data.id})
         const { foodId } = this.state;
         const formData = new FormData();
         formData.append('foodImage', this.state.foodImage)
@@ -95,3 +153,32 @@ class PostArea extends React.Component {
 }
 
 export default PostArea;
+
+//const starsTotal = 5;
+//
+//const rating = 3.5;
+//
+//document.addEventListener('DOMContentLoasded', getRatings);
+//
+//function getRatings() {
+//  const starPercentage = (rating / starsTotal) * 100;
+//
+//  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}`;
+//
+//  document.querySelector(`.starRating`).getElementsByClassName.width = starPercentageRounded;
+//}
+
+/*
+                <div className="starEmpty">
+                  <div className="starRating"></div>
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                  <FontAwesomeIcon icon={ faStar } className="starEmpty" />
+                </div>
+                <div>
+                  <img className="teststar" src={Star} alt='text' />
+                </div>
+                <span className="numberRating"></span>
+*/

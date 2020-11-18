@@ -35,20 +35,24 @@ import { render } from "react-dom";
              postInfo: [
                 { id: 1,
                 username: "Mr.Harvey", 
-                foodname: "Pizza",
+                name: "Pizza",
                 text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
                 rating: 4}, 
                 {id: 2,
                 username: "Mis.Laby", 
-                foodname: "짜장면",
+                name: "짜장면",
                 text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
                 rating: 2}
              ]
          }
      }
      pageList = (props) => {
-         return < div className="myPageList" >{props.postInfo.map(el =>
-             <MyPageList />)}</div >
+         return (
+         < div className="myPageList" >
+             {props.postInfo.map(el =>
+             <MyPageList post={el} />)}
+        </div >
+         )
      }
      render() {
          return(
@@ -59,10 +63,11 @@ import { render } from "react-dom";
                 <div className="totalMypages">
                     <div className="background1">
                         <center>
-                            <div>
-                                <pageList />
+                            <div className="mypageMain">테스트박스
+                                <div>
+                                    <this.pageList postInfo = {this.state.postInfo} />
+                                </div>
                             </div>
-                         <div className="mypageMain">테스트박스</div>
                          </center>
                     </div>
                     <div className="background2"></div>
