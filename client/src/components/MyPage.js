@@ -1,5 +1,5 @@
 import React from "react"
-//import Nav from "./Nav";
+import Nav from "./Nav";
 import PostArea from "./PostArea";
 import MyPageList from "./MyPageList";
 
@@ -62,23 +62,23 @@ axios.defaults.withCredentials = true;
         </div >
          )
      }
-     myPost = () => {
+     componentDidMount() {
          axios.get('http://3.34.179.55:3000/mypage')
          .then((res) => {
              this.setState({ postInfo : res.data })
          })
      }
      render() {
-         this.myPost();
          return(
-             <div>
-                <div>
+             <div className="myPageAll">
+                 <Nav />
+                <div className="postAreaDiv" >
                 <PostArea />
                 </div>
                 <div className="totalMypages">
                     <div className="background1">
                         <center>
-                            <div className="mypageMain">테스트박스
+                            <div className="mypageMain">
                                 <div>
                                     <this.pageList postInfo = {this.state.postInfo} />
                                 </div>

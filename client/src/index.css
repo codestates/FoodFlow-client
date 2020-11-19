@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Poor+Story&display=swap");
 
 body {
+  position: relative;
+  height: 1000px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -9,6 +11,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   text-align: center;
+}
+
+footer {
+  position: sticky;
+  margin-top: 200px;
+  width: 100%;
+  background-color: #3c3935;
 }
 
 code {
@@ -325,50 +334,148 @@ code {
   margin-bottom: 50px;
 }
 
+.myPageAll {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.totalMypages {
+  position: relative;
+  background-color: #fff;
+}
+
 .mypageMain {
   position: relative;
-  top: 100px;
+  z-index: 2;
+  top: 49px;
   border: 1px solid #dbdbdb;
   width: 1350px;
   height: 780px;
   background-color: #ffffff;
+  border-radius: 15px;
 }
 
 .background1 {
-  background-color: #ede9e6;
+  background-color: #fff;
   background-image: linear-gradient(to bottom, #ede9e6 0%, #fff 100%);
 }
 
 .background2 {
-  position: fixed;
-  top: 0px;
-  left: 0px;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  height: 100%;
   background-color: #fff;
+}
+
+.totalMyPageList {
+  display: flex;
+  flex-direction: column;
+  margin-right: 25px;
+  margin-left: 25px;
+  border-bottom-style: solid;
+  border-bottom-color: #c83c0d;
+  border-bottom-width: 1px;
+}
+
+.foodImgCont {
+  display: flex;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.foodImg {
+  width: auto;
+  max-width: 350px;
+}
+
+.userName {
+  display: flex;
+  position: absolute;
+  margin-top: 55px;
+  left: 460px;
+  font-size: 28px;
+}
+
+.foodName {
+  display: flex;
+  position: absolute;
+  margin-top: 55px;
+  left: 660px;
+  font-size: 28px;
+}
+
+.starEmpty {
+  display: flex;
+  position: absolute;
+  margin-top: 55px;
+  left: 860px;
+  font-size: 28px;
+}
+
+.text {
+  display: flex;
+  position: absolute;
+  margin-top: 95px;
+  left: 460px;
+  font-size: 28px;
+}
+
+.time {
+  display: flex;
+  position: absolute;
+  margin-top: 275px;
+  margin-bottom: 55px;
+  left: 460px;
+  font-size: 28px;
 }
 
 .star-rating {width:304px; }
 .star-rating,.star-rating span {display:inline-block; height:55px; overflow:hidden; background:url(./img/star.png)no-repeat; }
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
 
+#main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-self: center;
+  justify-content: space-between;
+}
+
+#send {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: space-between;
+  margin-top: 100px;  
+}
 
 .submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  justify-content: space-between;
   min-width: 150px;
   min-height: 75px;
-  border-width: 1px;
 }
 
 .inputFoodName {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 150px;
+  height: 20px;
   min-height: 1vh;
+  margin-top: 3px;
+  border: 1px solid #dbdbdb;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 .rating {
   display: flex;
+  position: relative;
+  left: 170px;
+  bottom: 22px;
 }
 
 .inputChat {
@@ -378,5 +485,57 @@ code {
   align-items: center;
   min-width: 325px;
   width: 525px;
-  min-height: 30px;
+  min-height: 50px;
+  height: 94px;
+}
+
+.postAreaDiv {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+}
+
+.submitBtn {
+  position: relative;
+  left: 348px;
+  bottom: 39px;
+  width: 120px;
+  height: 40px;
+  background-color: #fbd46d;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+footer img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-top: 7px;
+  background-color: white;
+}
+
+.fooDiv {
+  float: left;
+}
+
+.fooDiv1 {
+  text-align: center;
+}
+
+.fooDiv1 span {
+  padding-top: 10px;
+  top: 5px;
+  font-size: 15px;
+  color: white;
+}
+
+.fooDiv1 p {
+  margin-top: 15px;
+  color: white;
+}
+
+.bottom {
+  padding-bottom: 5px;
 }
