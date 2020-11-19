@@ -64,7 +64,8 @@ axios.defaults.withCredentials = true;
          )
      }
      componentDidMount() {
-         axios.get('http://localhost:3001/mypage')
+        //  axios.get('http://localhost:3000/mypage')
+         axios.get('http://3.34.179.55:3000/mypage')
          .then((res) => {
             let result = res.data
             let newPostData = [];
