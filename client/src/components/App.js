@@ -66,11 +66,7 @@ class App extends React.Component {
           <Route exact path='/signin' render={() => <SignIn handleResponseSuccess={this.handleResponseSuccess.bind(this)}/>} />
           <Route exact path='/signup' render={() => <SignUp />} />
           <Route exact path='/mypage' render={() => <MyPage />} />
-<<<<<<< HEAD
-          <Route exact path='/' render={() => <MainPage />} />
-=======
           <Route exact path='/' render={() => <MainPage userInfo={this.state.userInfo}/>} />
->>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
         </Switch>
        
       </div>
