@@ -15,52 +15,16 @@ class MainPage extends React.Component {
     }
 
     async componentDidMount() {
-        let post = await axios.get("http://3.34.179.55:3000/") 
-        // let post = [
-        //     { id: 1,
-        //     username: "Mr.Harvey", 
-        //     foodname: "Pizza",
-        //     text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //     rating: 4}, 
-        //     {id: 2,
-        //     username: "Mis.Laby", 
-        //     foodname: "짜장면",
-        //     text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //     rating: 2}, 
-        //     {id: 3,
-        //     username: "Mr.Harvey", 
-        //     foodname: "짬뽕",
-        //     text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //     rating: 4}, 
-        //     {id: 5,
-        //     username: "Mis.Laby", 
-        //     foodname: "Pasta",
-        //     text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //     rating: 2},
-        //     { id: 6,
-        //         username: "Mr.Harvey", 
-        //         foodname: "Pizza",
-        //         text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //         rating: 4}, 
-        //         {id: 7,
-        //         username: "Mis.Laby", 
-        //         foodname: "짜장면",
-        //         text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //         rating: 2}, 
-        //         {id: 8,
-        //         username: "Mr.Harvey", 
-        //         foodname: "짬뽕",
-        //         text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //         rating: 4}, 
-        //         {id: 9,
-        //         username: "Mis.Laby", 
-        //         foodname: "Pasta",
-        //         text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
-        //         rating: 2}]
+        let post = await axios.get("http://localhost:3001/") 
+        
+        let result = post.data
+        
         let newPostData = [];
-        for(let i = post.length - 1; i >= 0; --i){
-            newPostData.push(post[i])
+        for(let i = result.length - 1; i >= 0; --i){
+            newPostData.push(result[i])
         }        
+
+        // console.log("새로운 데이터다 이것들아", newPostData)
         this.setState({
             postInfo: newPostData
         })

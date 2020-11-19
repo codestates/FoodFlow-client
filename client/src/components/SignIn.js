@@ -25,6 +25,7 @@ class SignIn extends React.Component {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
           axios.post('http://localhost:3000/user/signin', { email : email, password : password})
           //Mypage 이동
           .then((res) => {
@@ -38,18 +39,16 @@ class SignIn extends React.Component {
               }
           })                                         
           .catch(console.error('err'))
-=======
-          axios.post('http://3.34.179.55:3000/user/signin', { email : email, password : password})
+
+          axios.post('http://localhost:3001/user/signin', { email : email, password : password})
           .then((res) => this.props.handleResponseSuccess(res.id))
           .catch(console.log('err'))
-
->>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
       }
     };
     render() {
         return (
             <div>
-<<<<<<< HEAD
+
                 <Nav />
                 {/* Mypage로 this.state 전달 */}
                 <MyPage
@@ -60,9 +59,8 @@ class SignIn extends React.Component {
                   <div>
                       {this.state.userId}
                   </div>
-=======
-                
->>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
+
+        
             <div className="totalSignUps">
                 <img className="signIns__pic" alt="" src={logInImg}></img> 
                 <center className="signUps">
@@ -90,9 +88,6 @@ class SignIn extends React.Component {
         )
     }
   }
-<<<<<<< HEAD
-  export default withRouter(SignIn);
-=======
 
   export default withRouter(SignIn);
->>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
+

@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+
+
 axios.defaults.withCredentials = true;
 
 //import { faStar } from "@fortawesome/free-solid-svg-icons"
@@ -36,11 +38,11 @@ class PostArea extends React.Component {
   // }
   submitPost = (e) => {
     e.preventDefault();
-    const { name, rating, text } = this.state;
+    const { name, text } = this.state;
     if ( !name || !text ) {
       this.setState({errorMessage : '빈 칸을 입력해주세요'});
     } else {
-      axios.post('http://3.34.179.55:3000/food/write',
+      axios.post('http://localhost:3001/food/write',
       {
         name : name
       })
@@ -50,19 +52,19 @@ class PostArea extends React.Component {
       .then(() => {
         return this.posting();
       })
+
     }
   }
   posting() {
-    axios.post("http://3.34.179.55:3000/posts/write", {
+    axios.post("http://localhost:3001/posts/write", {
       text: this.state.text,
       rating: this.state.rating,
       id: this.state.foodId
     })
-    .then()
-    .then((res) => {
-      console.log(res.data)
-    })
+    window.location.replace("/mypage")
   }
+
+
   render() {
     return (
       <div>

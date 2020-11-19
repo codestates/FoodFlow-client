@@ -17,7 +17,7 @@ export default function myPageList(props) {
                 <span className='starRating'>{rating}</span>
             </div>
             <div className='text'>{text}</div>
-            <div className='time'>2020</div>
+            <div className='time'>{createdAt}</div>
         </div>
     )
 }
