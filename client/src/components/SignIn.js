@@ -4,8 +4,6 @@ import axios from "axios";
 //import Nav from "./Nav";
 import logInImg from "../img/logInImg.gif"
 import lettering from "../img/lettering.png"
-import MyPage from "./../components/MyPage"
-import Nav from "./../components/Nav"
 
 class SignIn extends React.Component {
   constructor(props){
@@ -13,7 +11,6 @@ class SignIn extends React.Component {
     this.state = {
         email : "",
         password : "",
-        userId : "",
         errorMessage : ""
     };
     this.handleInputValue = this.handleInputValue.bind(this);
@@ -26,41 +23,16 @@ class SignIn extends React.Component {
       if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
-          axios.post('http://localhost:3000/user/signin', { email : email, password : password})
-          //Mypage 이동
-          .then((res) => {
-              if(res.status === 200) {
-                console.log(res.data)
-                this.setState({
-                    userId : res.data.id //signin에서 넘어온 id 값
-                })
-                console.log(this.state.userId)
-                // this.props.history.push('/mypage')           
-              }
-          })                                         
-          .catch(console.error('err'))
-
-          axios.post('http://localhost:3000/user/signin', { email : email, password : password})
+          axios.post('http://localhost:3001/user/signin', { email : email, password : password})
           .then((res) => this.props.handleResponseSuccess(res.id))
           .catch(console.log('err'))
+
       }
     };
     render() {
         return (
             <div>
-
-                <Nav />
-                {/* Mypage로 this.state 전달 */}
-                <MyPage
-                  email = {this.state.email}
-                  password = {this.state.password}
-                  userId = {this.state.userId}
-                  />
-                  <div>
-                      {this.state.userId}
-                  </div>
-
-        
+                
             <div className="totalSignUps">
                 <img className="signIns__pic" alt="" src={logInImg}></img> 
                 <center className="signUps">
@@ -90,4 +62,3 @@ class SignIn extends React.Component {
   }
 
   export default withRouter(SignIn);
-
