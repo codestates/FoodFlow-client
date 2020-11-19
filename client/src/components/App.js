@@ -23,16 +23,21 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    let hasSession = await axios.get("http://localhost:3001/user")
+    // let hasSession = await axios.get("http://localhost:3000/user")
+    let hasSession = await axios.get("http://3.34.179.55:3000/user")
     if(!hasSession){
-      this.setState({isLogOut: false})
+      this.setState({
+        isLogOut: false,
+        userInfo : ""
+      })
     } else {
       this.setState({isLogOut: true, userInfo: hasSession.data.username})
     }
   }
 
   async handleResponseSuccess(login) {
-    let successInfo = await axios.get("http://localhost:3001/user")
+    // let successInfo = await axios.get("http://localhost:3000/user")
+    let successInfo = await axios.get("http://3.34.179.55:3000/user")
     console.log(successInfo)
     if(!successInfo){
       this.setState({userInfo: ""})
@@ -44,7 +49,8 @@ class App extends React.Component {
 
   modalClick = async () => {
     this.setState({modal: "block"})
-    await axios.post("http://localhost:3001/user/signout")
+    // await axios.post("http://localhost:3000/user/signout")
+    await axios.post("http://3.34.179.55/user/signout")
     setTimeout(() => {
       this.setState({isLogOut: false})
       this.modalClose();
