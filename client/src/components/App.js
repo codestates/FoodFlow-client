@@ -6,6 +6,7 @@ import SignIn from "./SignIn"
 import Nav from "./Nav"
 import { Switch, Route, withRouter } from "react-router-dom";
 import axios from "axios";
+
 // import data from "../PostSheetTest/testPostInfo.js"
 
 class App extends React.Component {
@@ -14,30 +15,40 @@ class App extends React.Component {
     this.state = {
       isLogOut: false,
       userInfo: null,
-      modal: "none"
+      modal: "none",
+      
     }
     this.modalClick= this.modalClick.bind(this) 
     this.modalClose= this.modalClose.bind(this)
   }
 
+  async componentDidMount() {
+    let hasSession = await axios.get("http://localhost:3001/user")
+    if(!hasSession){
+      this.setState({isLogOut: false})
+    } else {
+      this.setState({isLogOut: true, userInfo: hasSession.data.username})
+    }
+  }
+
   async handleResponseSuccess(login) {
-    let successInfo = await axios.get("http://3.34.179.55:3000/mypage")
+    let successInfo = await axios.get("http://localhost:3001/user")
     console.log(successInfo)
     if(!successInfo){
       this.setState({userInfo: ""})
     } else {
-      this.setState({isLogOut: true, userInfo: "successInfo.user"})
+      this.setState({isLogOut: true, userInfo: successInfo.data.username})
       this.props.history.push('/');
     }
   }
 
   modalClick = async () => {
     this.setState({modal: "block"})
-    await axios.post("http://3.34.179.55:3000/user/signout")
+    await axios.post("http://localhost:3001/user/signout")
     setTimeout(() => {
       this.setState({isLogOut: false})
       this.modalClose();
-    }, 2500);
+    }, 2000);
     
     this.props.history.push('/');
   }
