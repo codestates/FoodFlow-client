@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
-import Nav from "./Nav";
-import MyPage from "./MyPage"
-
+//import Nav from "./Nav";
+import logInImg from "../img/logInImg.gif"
+import lettering from "../img/lettering.png"
 
 class SignIn extends React.Component {
   constructor(props){
@@ -24,6 +24,7 @@ class SignIn extends React.Component {
       if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
+<<<<<<< HEAD
           axios.post('http://localhost:3000/user/signin', { email : email, password : password})
           //Mypage 이동
           .then((res) => {
@@ -37,11 +38,18 @@ class SignIn extends React.Component {
               }
           })                                         
           .catch(console.error('err'))
+=======
+          axios.post('http://3.34.179.55:3000/user/signin', { email : email, password : password})
+          .then((res) => this.props.handleResponseSuccess(res.id))
+          .catch(console.log('err'))
+
+>>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
       }
     };
     render() {
         return (
             <div>
+<<<<<<< HEAD
                 <Nav />
                 {/* Mypage로 this.state 전달 */}
                 <MyPage
@@ -52,10 +60,14 @@ class SignIn extends React.Component {
                   <div>
                       {this.state.userId}
                   </div>
+=======
+                
+>>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
             <div className="totalSignUps">
-                <img className="signUps__pic" src="http://files.itworld.co.kr/archive/image/2017/12/GettyImages-889581518.jpg" alt="profile"></img> 
+                <img className="signIns__pic" alt="" src={logInImg}></img> 
                 <center className="signUps">
-                    <h1 className="signUps__title">로그인</h1>
+                <img className="signUps__title" alt="" src={lettering}></img>
+                <div className="signUps__subTitle">Welcome Food Zone</div>
                     <div className="signUps__body">
                         <div className="signUps__name signUp">
                             <input className="signUps__input" type='email' placeholder='이메일' onChange={this.handleInputValue("email")}></input>
@@ -63,10 +75,10 @@ class SignIn extends React.Component {
                         <div>
                             <input className="signUps__input" type='password' placeholder='비밀번호' onChange={this.handleInputValue("password")}></input>
                         </div>
-                        <div>
+                        <div className="signIns__noId">
                             <Link to='/signup'>아직 아이디가 없으신가요?</Link>
                         </div>
-                        <div>
+                        <div className="signIns__gitHub">
                         <a href="https://github.com/login/oauth/authorize?client_id=6c600e12bf58f2a72319&redirect_uri=https://6a24503ce00f.ngrok.io">GitHub로 로그인</a>
                         </div>
                         <button className="signUps__btn" type='submit' onClick={this.handleSignIn}>로그인</button> 
@@ -78,4 +90,9 @@ class SignIn extends React.Component {
         )
     }
   }
+<<<<<<< HEAD
   export default withRouter(SignIn);
+=======
+
+  export default withRouter(SignIn);
+>>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71

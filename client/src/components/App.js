@@ -1,26 +1,69 @@
 import React from "react";
 import MainPage from "./MainPage"
+import MyPage from "./MyPage"
 import SignUp from "./SignUp"
 import SignIn from "./SignIn"
-import MyPage from "./MyPage"
-import { Switch, Route } from "react-router-dom";
+import Nav from "./Nav"
+import { Switch, Route, withRouter } from "react-router-dom";
+import axios from "axios";
+// import data from "../PostSheetTest/testPostInfo.js"
 
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      isLogOut: false,
+      userInfo: null,
+      modal: "none"
+    }
+    this.modalClick= this.modalClick.bind(this) 
+    this.modalClose= this.modalClose.bind(this)
   }
+
+  async handleResponseSuccess(login) {
+    let successInfo = await axios.get("http://3.34.179.55:3000/mypage")
+    console.log(successInfo)
+    if(!successInfo){
+      this.setState({userInfo: ""})
+    } else {
+      this.setState({isLogOut: true, userInfo: "successInfo.user"})
+      this.props.history.push('/');
+    }
+  }
+
+  modalClick = async () => {
+    this.setState({modal: "block"})
+    await axios.post("http://3.34.179.55:3000/user/signout")
+    setTimeout(() => {
+      this.setState({isLogOut: false})
+      this.modalClose();
+    }, 2500);
+    
+    this.props.history.push('/');
+  }
+
+  modalClose = () => {
+    this.setState({modal: "none"})
+  }
+
+
   render() {
     return (
       <div>
+          <Nav isLogOut={this.state.isLogOut} userInfo={this.state.userInfo} modalClick={this.modalClick} modalDisplay={this.state.modal} modalClose={this.modalClose}/>
         <Switch>
-          <Route exact path='/signin' render={() => <SignIn />} />
+          <Route exact path='/signin' render={() => <SignIn handleResponseSuccess={this.handleResponseSuccess.bind(this)}/>} />
           <Route exact path='/signup' render={() => <SignUp />} />
           <Route exact path='/mypage' render={() => <MyPage />} />
+<<<<<<< HEAD
           <Route exact path='/' render={() => <MainPage />} />
+=======
+          <Route exact path='/' render={() => <MainPage userInfo={this.state.userInfo}/>} />
+>>>>>>> 6df73dcf7b72732325bf97434b5df1171628dc71
         </Switch>
+       
       </div>
     );
   }
 }
-export default App;
+export default withRouter(App);

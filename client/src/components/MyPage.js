@@ -1,117 +1,97 @@
-import React from "react";
-import axios, { post } from 'axios';
-import FormData from 'form-data'
+import React from "react"
+import Nav from "./Nav";
+import PostArea from "./PostArea";
+import MyPageList from "./MyPageList";
+
+import axios from "axios";
+//import { render } from "react-dom";
+
 axios.defaults.withCredentials = true;
-class MyPage extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state ={
-        file: null,
-        imgPath: null,
-        foodId : null
-      }
-      this.onFormSubmit = this.onFormSubmit.bind(this)
-      this.onChange = this.onChange.bind(this)
-      this.fileUpload = this.fileUpload.bind(this)
-    }
-    // componentDidMount(props) {
-    //     console.log(props)
-    // }
-    //form 안의 submit 버튼이 눌러지면 onSubmit 이벤트가 발생하는 것 같음
-    onFormSubmit(e){
-      e.preventDefault() // Stop form submit
-      //this.state.file값을 바탕으로 fileUpload 메서드 실행
-      this.fileUpload(this.state.file)
-      .then((res)=>{
-        console.log(res)
-        this.setState({
-            imgPath : res.data
-        })
-      })
-    }
-    //파일 선택 버튼 클릭 후 업로드할 파일을 선택하면,
-    //변경된 파일의 정보를 this.state.file 속성에 담는다.
-    onChange(e) {
-      this.setState({file:e.target.files[0]})
-    }
-    fileUpload(file){
-      const url = 'http://localhost:3000/user/upload/profile';
-      const formData = new FormData();
-      //append의 첫번째 인자인 key값과, 서버의 upload.single(key값)
-      //양쪽의 key 값이 일치해야함! (key 값이 fieldname임)
-      formData.append('file', file)
-      formData.append('email', "test999")
-      const config = {
-          headers: {
-              'content-type': 'multipart/form-data'
-          }
-      }
-      return  post(url, formData, config)
-    }
-    getImagefile() {
-        axios.get(`http://localhost:3000/${this.state.imgPath}`)
-    }
-    foodId() {
-        axios
-            .post("http://localhost:3000/food/write", {
-                name: "미쳤다22."
-            })
-            .then((res) => {
-                this.setState({
-                    foodId: res.data.id
-                })
-            })
-            .then(() =>{
-                return this.posting();
-            })
-        }
-    posting() {
-        axios.post("http://localhost:3000/posts/write", {
-            text: "짜장면 맛있다.",
-            rating: 4.0,
-            foodImage: "짜장면 이미지.jpg",
-            id: this.state.foodId
-        })
-            .then((res) => {
-                console.log(res.data.id)
-            })
-    }
-    // 해당 유저의 모든 post 정보 받아오기
-    // getPosts(props){
-    //     console.log(props.userid)
-    //     axios.get("http://localhost:3000/mypage")
-    //     .then((res) => {
-    //         console.log(res)
-    //     })
-    // }
-    render() {
-      return (
-          <>
-          {/* form 태그 내부의 submit type을 갖는 Upload 버튼이 눌러졌을 때
-          onSubmit에 의해서 onFormSubmit 메서드가 실행된다. */}
-        <form onSubmit={this.onFormSubmit}>
-          <h1>File Upload</h1>
-          <input type="file" onChange={this.onChange} />
-          <button type="submit">Upload</button>
-        </form>
-        {/* association test */}
-        <button
-            onClick={this.foodId.bind(this)}>
-            foodID 테스트
-        </button>
-        {/* <button
-            onClick={this.posting.bind(this)}>
-            posting 테스트
-        </button> */}
-        <div>
-          <img src={`http://localhost:3000/${this.state.imgPath}`} width = "100px" alt=""/>
-        </div>
-        {/* <button
-        onClick = {this.getPosts.bind(this)}>
-        getPosts 테스트
-        </button>               */}
-        </>
-     )
-    }
-  }
-export default (MyPage);
+
+//function MyPage(props) {
+//    const { userinfo } = props;
+//    if(userinfo) {
+//        const { username, email, profileImage } = userinfo;
+//        return (
+//            <div>
+//               <Nav />
+//               <div className="totalMypages">
+//                   <div className="background1">
+//                       <center>
+//                            <div className="mypageMain">
+//                                <h1>Mypage</h1>
+//                                <div className="myPage_username">{username}</div>
+//                                <div className="myPage_email">{email}</div>
+//                                <div className="myPage_profile_image">{profileImage}</div>
+//                            </div>
+//                        </center>
+//                   </div>
+//                   <div className="background2"></div>
+//               </div>
+//            </div> 
+//        )
+//    }
+//}
+ class MyPage extends React.Component {
+     constructor(props) {
+         super(props);
+         this.state = {
+             postInfo: [
+                { id: 1,
+                    user: {
+                username: "Mr.Harvey"}, 
+                food: {
+                name: "Pizza"},
+                text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
+                rating: 4}, 
+                {id: 2,
+                    user: {
+                username: "Mis.Laby"}, 
+                food: {
+                name: "짜장면"},
+                text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
+                rating: 2}
+             ]
+         }
+     }
+     pageList = (props) => {
+         return (
+         < div className="myPageList" >
+             {props.postInfo.map(el =>
+             <MyPageList post={el} />)}
+        </div >
+         )
+     }
+     componentDidMount() {
+         axios.get('http://3.34.179.55:3000/mypage')
+         .then((res) => {
+             this.setState({ postInfo : res.data })
+         })
+     }
+     render() {
+         return(
+             <div className="myPageAll">
+                 <Nav />
+                <div className="postAreaDiv" >
+                <PostArea />
+                </div>
+                <div className="totalMypages">
+                    <div className="background1">
+                        <center>
+                            <div className="mypageMain">
+                                <div>
+                                    <this.pageList postInfo = {this.state.postInfo} />
+                                </div>
+                            </div>
+                         </center>
+                    </div>
+                    <div className="background2"></div>
+                </div>
+             </div>
+         )
+     }
+ }
+    
+
+
+export default MyPage;
