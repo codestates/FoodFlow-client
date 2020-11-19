@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
-import Nav from "./Nav";
+//import Nav from "./Nav";
 import logInImg from "../img/logInImg.gif"
 import lettering from "../img/lettering.png"
 
@@ -23,19 +23,20 @@ class SignIn extends React.Component {
       if ( !email||!password ) {
           this.setState({errorMessage : "이메일과 비밀번호를 입력해주세요"})
       } else {
-          axios.post('http://3.34.179.55:3000/user/signin', { email : email, password : password})
+          axios.post('http://localhost:3001/user/signin', { email : email, password : password})
+          .then((res) => this.props.handleResponseSuccess(res.id))
           .catch(console.log('err'))
-          this.props.history.push("/");
+
       }
     };
     render() {
         return (
             <div>
-                <Nav />
+                
             <div className="totalSignUps">
-                <img className="signIns__pic" src={logInImg} alt="profile"></img> 
+                <img className="signIns__pic" alt="" src={logInImg}></img> 
                 <center className="signUps">
-                <img className="signUps__title" alt="profile" src={lettering}></img>
+                <img className="signUps__title" alt="" src={lettering}></img>
                 <div className="signUps__subTitle">Welcome Food Zone</div>
                     <div className="signUps__body">
                         <div className="signUps__name signUp">

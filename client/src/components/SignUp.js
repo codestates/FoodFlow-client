@@ -2,8 +2,10 @@ import React from "react"
 import axios from "axios";
 import phoPic from "../img/pho.gif"
 import lettering from "../img/lettering.png"
-import Nav from "./Nav";
-import { Link, withRouter } from "react-router-dom";
+//import Nav from "./Nav";
+import {withRouter } from "react-router-dom";
+
+axios.defaults.withCredentials = true;
 
 
 class SignUp extends React.Component {
@@ -53,12 +55,6 @@ class SignUp extends React.Component {
           }
         }
       }
-
-    // handlePasswordError = (key) => (e) => {
-    //     if(e.target.value !== this.state.password){
-    //         this.setState({errorPassword: "비밀번호가 같지 않습니다"})
-    //     }
-    // }
     
     // 가입에 필요한 필수 항목을 작성 시, 서버에 요청
     handleSignup = async () => {
@@ -66,7 +62,7 @@ class SignUp extends React.Component {
        if(!username || !email || !password){
            this.setState({errorMessage: "모든 항목은 필수입니다"})
        } else {
-           await axios.post("http://3.34.179.55:3000/user/signup", {
+           await axios.post("http://localhost:3001/user/signup", {
                username: username,
                email: email,
                password: password
@@ -78,11 +74,11 @@ class SignUp extends React.Component {
     render() {
         return(
             <div>
-                <Nav />
+            
             <div className="totalSignUps">
-                 <img className="signUps__pic" alt="profile" src={phoPic}></img>  
+                 <img className="signUps__pic" alt="" src={phoPic}></img>  
                 <center className="signUps">
-                <img className="signUps__title" alt="profile" src={lettering}></img>
+                <img className="signUps__title" alt="" src={lettering}></img>
                 <div className="signUps__subTitle">Record Your Food</div>
                     <div className="signUps__body">
                         <div className="signUps__name signUp">

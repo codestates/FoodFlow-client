@@ -62,8 +62,13 @@ axios.defaults.withCredentials = true;
         </div >
          )
      }
+<<<<<<< HEAD
      componentDidMount() {
          axios.get('http://3.34.179.55:3000/mypage')
+=======
+     myPost = () => {
+         axios.get('http://3.34.179.55:3001/mypage')
+>>>>>>> 327238280975727d19de00e68d94e84da0d5de85
          .then((res) => {
              this.setState({ postInfo : res.data })
          })

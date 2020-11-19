@@ -1,5 +1,5 @@
 import React from "react"
-import Nav from "./Nav";
+//import Nav from "./Nav";
 import MainPageList from "./MainPageList"
 import mainPic from "../img/foodflow koreanfood(remake).jpg"
 import axios from "axios"
@@ -15,7 +15,7 @@ class MainPage extends React.Component {
     }
 
     async componentDidMount() {
-        let post = await axios.get("http://3.34.179.55:3000/") 
+        let post = await axios.get("http://localhost:3001/") 
         // let post = [
         //     { id: 1,
         //     username: "Mr.Harvey", 
@@ -69,7 +69,6 @@ class MainPage extends React.Component {
     render() {
         return(
             <div>
-               <Nav />
                <div className="mainPage__MainTop">
                 <img className="mainPage__mainPic" alt="profile" src={mainPic}></img>  
                 <div className="mainPage__title">Food Flow</div>
