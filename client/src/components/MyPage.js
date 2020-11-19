@@ -36,7 +36,7 @@ axios.defaults.withCredentials = true;
      constructor(props) {
          super(props);
          this.state = {
-             postInfo: [
+            postInfo: [
                 { id: 1,
                     user: {
                 username: "Mr.Harvey"}, 
@@ -52,6 +52,7 @@ axios.defaults.withCredentials = true;
                 text: "피자를 너무 좋아 하는 나는 피자매니아!!", 
                 rating: 2}
              ]
+             
          }
      }
      pageList = (props) => {
@@ -65,13 +66,17 @@ axios.defaults.withCredentials = true;
      componentDidMount() {
          axios.get('http://localhost:3001/mypage')
          .then((res) => {
-             this.setState({ postInfo : res.data })
+            let result = res.data
+            let newPostData = [];
+            for(let i = result.length - 1; i >= 0; --i){
+                newPostData.push(result[i])
+            }        
+             this.setState({ postInfo : newPostData})
          })
      }
      render() {
          return(
              <div className="myPageAll">
-                 <Nav />
                 <div className="postAreaDiv" >
                 <PostArea />
                 </div>

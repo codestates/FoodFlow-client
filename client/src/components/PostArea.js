@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+
+
 axios.defaults.withCredentials = true;
 
 //import { faStar } from "@fortawesome/free-solid-svg-icons"
@@ -50,6 +52,7 @@ class PostArea extends React.Component {
       .then(() => {
         return this.posting();
       })
+
     }
   }
   posting() {
@@ -58,11 +61,10 @@ class PostArea extends React.Component {
       rating: this.state.rating,
       id: this.state.foodId
     })
-    .then()
-    .then((res) => {
-      console.log(res.data)
-    })
+    window.location.replace("/mypage")
   }
+
+
   render() {
     return (
       <div>
