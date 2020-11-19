@@ -418,7 +418,7 @@ code {
   background-color: #fff;
 }
 
-<<<<<<< HEAD
+
 .totalMyPageList {
   display: flex;
   flex-direction: column;
@@ -492,22 +492,7 @@ code {
   position: relative;
   align-self: center;
   justify-content: space-between;
-=======
-.star-rating {
-  width: 304px;
-}
-.star-rating,
-.star-rating span {
-  display: inline-block;
-  height: 55px;
-  overflow: hidden;
-  background: url(./img/star.png) no-repeat;
-}
-.star-rating span {
-  background-position: left bottom;
-  line-height: 0;
-  vertical-align: top;
->>>>>>> 327238280975727d19de00e68d94e84da0d5de85
+
 }
 
 #send {
@@ -574,7 +559,54 @@ code {
   font-size: medium;
 }
 
-<<<<<<< HEAD
+
+.logOut {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.logOut__link {
+  cursor: pointer;
+}
+
+.logOut__content {
+  background-color: #fbd46d;
+  margin: 20% auto;
+  padding: 20px;
+  border: 3px solid rgb(172, 169, 169);
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgb(233, 227, 227);
+}
+
+/* .logOut__closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.logOut__closeButton:hover,
+.logOut__closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} */
+
+.logOut__message {
+  font-size: 23px;
+  font-family: "Jua", sans-serif;
+}
+
 footer img {
   width: 90px;
   height: 90px;
@@ -606,8 +638,4 @@ footer img {
 .bottom {
   padding-bottom: 5px;
 }
-=======
-/* .nav__logInChange {
-  visibility: hidden;
-} */
->>>>>>> 327238280975727d19de00e68d94e84da0d5de85
+
