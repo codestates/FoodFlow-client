@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   async handleResponseSuccess(login) {
-    let successInfo = await axios.get("http://localhost:3001/mypage")
+    let successInfo = await axios.get("http://3.34.179.55:3000/mypage")
     console.log(successInfo)
     if(!successInfo){
       this.setState({userInfo: ""})
@@ -33,7 +33,7 @@ class App extends React.Component {
 
   modalClick = async () => {
     this.setState({modal: "block"})
-    await axios.post("http://localhost:3001/user/signout")
+    await axios.post("http://3.34.179.55:3000/user/signout")
     setTimeout(() => {
       this.setState({isLogOut: false})
       this.modalClose();

@@ -418,7 +418,6 @@ code {
   background-color: #fff;
 }
 
-
 .totalMyPageList {
   display: flex;
   flex-direction: column;
@@ -492,7 +491,6 @@ code {
   position: relative;
   align-self: center;
   justify-content: space-between;
-
 }
 
 #send {
@@ -638,4 +636,3 @@ footer img {
 .bottom {
   padding-bottom: 5px;
 }
-
