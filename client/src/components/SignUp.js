@@ -62,7 +62,7 @@ class SignUp extends React.Component {
        if(!username || !email || !password){
            this.setState({errorMessage: "모든 항목은 필수입니다"})
        } else {
-           await axios.post("http://localhost:3001/user/signup", {
+           await axios.post("http://localhost:3000/user/signup", {
                username: username,
                email: email,
                password: password

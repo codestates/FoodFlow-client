@@ -4,6 +4,8 @@ import axios from "axios";
 //import Nav from "./Nav";
 import logInImg from "../img/logInImg.gif"
 import lettering from "../img/lettering.png"
+import MyPage from "./../components/MyPage"
+import Nav from "./../components/Nav"
 
 class SignIn extends React.Component {
   constructor(props){
@@ -38,7 +40,7 @@ class SignIn extends React.Component {
           })                                         
           .catch(console.error('err'))
 
-          axios.post('http://localhost:3001/user/signin', { email : email, password : password})
+          axios.post('http://localhost:3000/user/signin', { email : email, password : password})
           .then((res) => this.props.handleResponseSuccess(res.id))
           .catch(console.log('err'))
       }

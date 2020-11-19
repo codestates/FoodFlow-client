@@ -15,7 +15,7 @@ class MainPage extends React.Component {
     }
 
     async componentDidMount() {
-        let post = await axios.get("http://localhost:3001/") 
+        let post = await axios.get("http://localhost:3000/") 
         
         let result = post.data
         
