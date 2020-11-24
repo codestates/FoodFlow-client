@@ -21,10 +21,11 @@
 
 # 우리를 소개합니다
 
-| 염정헌 | Frontend |
-| 류종현 | Frontend |
-| 이정환 | Backend |
-| 최창준 | Backend |
+| [염정헌](https://github.com/yumboy8747) | Frontend |
+| ----------- | ----------- |
+| [류종현](https://github.com/ryhyn123) | Frontend |
+| [이정환](https://github.com/doi-h) | Backend |
+| [최창준](https://github.com/CJ0823) | Backend |
 
 
 # For project details
