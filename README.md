@@ -1,4 +1,4 @@
-# Food Flow
+# :memo:Food Flow
 
 ![image-asset-removebg-preview](https://user-images.githubusercontent.com/67395798/99628383-617e2b00-2a79-11eb-9f60-83bee23d3468.png)
 
@@ -11,15 +11,15 @@
 **Food Flow** 입니다.
 
 
-# 어떤 기술이 사용되었나요?
+# :speech_balloon:어떤 기술이 사용되었나요?
 ![기술스택](https://user-images.githubusercontent.com/68806834/100068728-3c275d80-2e7b-11eb-81b1-d8878ed0d79f.png)
 
 
-# Architecture
+# :wrench:Architecture
 ![사이트플로우](https://user-images.githubusercontent.com/68806834/100069158-c1127700-2e7b-11eb-9524-67973f3671d0.png)
 
 
-# 우리를 소개합니다
+# :busts_in_silhouette:우리를 소개합니다
 
 | [염정헌](https://github.com/yumboy8747) | Frontend |
 | ----------- | ----------- |
@@ -28,5 +28,5 @@
 | [최창준](https://github.com/CJ0823) | Backend |
 
 
-# For project details
+# 🔖For project details
 ## [**checkout WIKI**](https://github.com/codestates/im23project14-client/wiki#logo)
