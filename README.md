@@ -7,8 +7,8 @@
 다른 사람들은 어떻게 생각하는지, <p>
 세상엔 어떤 맛있는 것들이 있는지 알아보자!
 
-**세상 모든 혓바닥들의 기억**, <p>
-*Food Flow* 입니다.
+*세상 모든 혓바닥들의 기억*, <p>
+**Food Flow** 입니다.
 
 
 # 어떤 기술이 사용되었나요?
@@ -16,6 +16,7 @@
 
 
 # Architecture
+![사이트플로우](https://user-images.githubusercontent.com/68806834/100069158-c1127700-2e7b-11eb-9524-67973f3671d0.png)
 
 
 # 우리를 소개합니다
@@ -27,4 +28,4 @@
 
 
 # For project details
-[checkout WIKI](https://github.com/codestates/im23project14-client/wiki#logo)
+## [**checkout WIKI**](https://github.com/codestates/im23project14-client/wiki#logo)
