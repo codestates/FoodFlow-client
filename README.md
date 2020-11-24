@@ -21,4 +21,4 @@ Food Flow 입니다.
 
 
 # For project details
-checkout WIKI
+[checkout WIKI](https://github.com/codestates/im23project14-client/wiki#logo)
