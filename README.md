@@ -19,10 +19,11 @@
 ![사이트플로우](https://user-images.githubusercontent.com/68806834/100069158-c1127700-2e7b-11eb-9524-67973f3671d0.png)
 
 
-# :busts_in_silhouette:우리를 소개합니다
+# :construction_worker:우리를 소개합니다
 
-| [염정헌](https://github.com/yumboy8747) | Frontend |
+|  |  |
 | ----------- | ----------- |
+| [염정헌](https://github.com/yumboy8747) | Frontend |
 | [류종현](https://github.com/ryhyn123) | Frontend |
 | [이정환](https://github.com/doi-h) | Backend |
 | [최창준](https://github.com/CJ0823) | Backend |
